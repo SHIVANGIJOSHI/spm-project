@@ -1,2 +1,2 @@
-# hobby.github.io
+# spm.github.io
 My Personal Blog
