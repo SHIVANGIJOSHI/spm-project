@@ -1,2 +1,2 @@
 # spm.github.io
-My Personal Blog
+Website for Software Project Management's assignment Project...
