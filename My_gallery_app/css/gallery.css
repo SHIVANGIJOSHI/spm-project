@@ -1,0 +1,38 @@
+.crop-img{
+  max-height:150px;
+  max-width:100%;
+}
+
+.large-img{
+  max-width:100%;
+}
+
+.icon-img{
+  max-height:100px;
+  max-width:40%;
+}
+
+.carousel-img{
+    margin: auto;
+    padding: 10px;
+    max-height:300px;
+    max-width:100%;
+
+}
+
+.night{
+    background:black;
+    color:white;
+}
+button:hover{
+  color: gray;
+}
+h1{
+font-family: serif;
+font-size: 80px;
+}
+.goodfont{
+  font-family: sans-serif;
+  font-size: 25px;
+}
+

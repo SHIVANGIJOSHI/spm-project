@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  <head>
+    
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InfoTree</title>
+   
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v3.0.3.js"></script>
+    
+    
+    <script src="js/Albums.js"> </script>
+    <script src="js/gallery.js"> </script>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/gallery.css" rel="stylesheet">
+     
+
+  </head>
+  <body>
+  	
+
+    <div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-default js-go-day">DAY NODE</button>
+				<button class="btn btn-default js-go-night">NIGHT NODE</button>
+			</div>
+		</div>
+	 <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">My gallery app</a>
+          </div>
+        </div>
+      </nav>    
+      <div id="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                         <li class="active"><a href="#">Home</a></li>
+                         <li class="active"><a href="aboutme.html">About</a></li>
+                         
+                    </ul>
+                 
+            </div>
+            </div>
+    </div>
+    </div>	
+    <div class="container">
+
+      
+      <div class="page-header">
+        <h1 >My Gallery Web App</h1>
+        <p class="goodfont">Welcome to my gallery app. It is the static version...</p>
+      </div>
+
+
+
+     
+      <ul class="nav nav-tabs">
+            <li role="" class="active"><a href="#" id="albums-tab" >Albums</a></li>
+            <li role=""><a href="#" id="photos-tab" >Photos</a></li>
+            <li role=""><a href="#" id="slideshow-tab" >Slideshow</a></li>
+          </ul>
+      <br/><br/>
+
+
+      
+      <div id="content"  class="container-fluid"  role="main">
+      </div>
+  </div> 
+<script id="albums-template" type="text/x-handlebars-template">
+  <div class="row">
+
+    {{#each albums}}
+    <div class="col-xs-12 col-md-3"> 
+        <div class="album-thumbnail"  data-id="{{@index}}">
+          <img class="crop-img" src="{{thumbnail}}" alt=""/> 
+            
+          <div class="caption">
+              <h4> {{name}} </h4>
+              <p>{{photos.length}} photos</p>
+          </div>
+         </div>
+    </div> <!-- / col -->
+
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+
+<script id="photos-template" type="text/x-handlebars-template">
+  <div class="row">
+    <!-- xs-12 : small display shows a single column (taking up 12 grid columns)-->
+    <!-- md-3 : medium and up displays use 3 grid columns per column -->
+
+    {{#each photos}}
+    <div class="col-xs-12 col-md-3"> 
+     <div class="photo-thumbnail"  data-id="{{@index}}">
+        <img class="crop-img" src="{{src}}" alt=""/> 
+          
+         <div class="caption">
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+         </div>
+      </div>
+       
+    </div> <!-- / col -->
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+
+<script id="photo-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-xs-12 col-md-12"> 
+        <img class="large-img" src="{{src}}" alt=""/> 
+          
+        <div class="caption">
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+        </div>
+      </div> <!-- / col -->
+
+  </div> <!-- / row -->
+</script>
+
+
+<script id="slideshow-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+  
+       <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+          {{#each photos}}
+            <div class="item {{#if @first}}active{{/if}}">
+             <img class="carousel-img" src="{{src}}" alt=""/> 
+            <div class="carousel-caption">
+              .
+            </div>
+          </div> <!-- / carousel item -->
+          {{/each}}
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div> <!-- / carousel --> 
+  </div> <!-- / col -->
+</div> <!-- / row -->
+</script>
+<script>
+
+
+	$('.js-go-night').click(function(){
+      	$('body').addClass('night');
+		$('div').addClass('night');
+		$('li').addClass('night');
+	});
+	$('.js-go-day').click(function(){
+		$('body').removeClass('night');
+		$('div').removeClass('night');
+		$('li').removeClass('night');
+	});
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
